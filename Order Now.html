@@ -75,111 +75,129 @@
                     <div class="row0">
             
                         <div class="col0">
-            
-                            <div class="inputBox0">
-                                <span>full name :</span>
-                                <input type="text" placeholder="king">
-                            </div>
-                            <div class="inputBox0">
-                                <span>email :</span>
-                                <input type="email" placeholder="example@example.com">
-                            </div>
-                            <div class="inputBox0">
-                                <span>address :</span>
-                                <input type="text" placeholder="room - street - locality">
-                            </div>
-                            <div class="inputBox0">
-                                <span>city :</span>
-                                <input type="text" placeholder="ipoh"> 
-                            </div>
+        
+                                          <h3 class="title0">Order Now!</h3>
 
-                            <div class="flex">
-                                <div class="inputBox0">
-                                    <span>state :</span>
-                                    <input type="text" placeholder="Malaysia">
-                                </div>
-                                <div class="inputBox0">
-                                    <span>postcode :</span>
-                                    <input type="text" placeholder="00000">
-                                </div>
-                            </div>
-            
-                            <div class="inputBox0">
-                                <p>cutlery want or not? <i class="fa fa-cutlery"></i></p>
+                <div class="inputBox0">
+                    <span>Full name :</span>
+                    <input type="text" placeholder="xxx">
+                </div>
+                <div class="inputBox0">
+                    <span>Email :</span>
+                    <input type="email" placeholder="example@example.com">
+                </div>
+                <div class="inputBox0">
+                    <span>Home address :</span>
+                    <input type="text" placeholder="Address">
+                </div>
+           </div>
+            <div class="col0">
 
-                                <div id="app-cover">
-                                    <div class="row">
-                                      <div class="toggle-button-cover">
-                                        <div class="button-cover">
-                                          <div class="button r" id="button-1">
-                                            <input type="checkbox" class="checkbox">
-                                            <div class="knobs"></div>
-                                            <div class="layer"></div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                                  </div>
-                                  
-                                  
-                                             </div>
-                                  
-                                              <div class="col0">
-                                  
-                                                  <h3 class="title0">payment</h3>
-                                  
-                                                  <div class="inputBox0">
-                                                      <span>customer select :</span>
-                                  <div class="custom-select" style="width:320px;">
-                                    <select>
-                                        <option value="0">Select payment :</option>
-                                        <option value="1">cash payment</option>
-                                        <option value="2">boost</option>
-                                        <option value="3">touch'n go</option>
-                                        <option value="4">credit card or debit card</option>
-                                      </select>
-                                    </div>
-                                    </div>
-                                    
-                                    <div class="inputBox0">
-                                        <span>cards accepted :</span>
-                                        <img src="payment.jpg" alt="">
-                                    </div>
-                                    <div class="inputBox0">
-                                        <span>name on card :</span>
-                                        <input type="text" placeholder="king yip">
-                                    </div>
-                                    <div class="inputBox0">
-                                        <span>credit card number :</span>
-                                        <input type="type" placeholder="1111-2222-3333-4444">
-                                    </div>
-                                    <div class="inputBox0">
-                                        <span>exp month :</span>
-                                        <input type="text" placeholder="january">
-                                    </div>
-                    
-                                    <div class="flex">
-                                        <div class="inputBox0">
-                                            <span>exp year :</span>
-                                            <input type="type" placeholder="2023">
-                                        </div>
-                                        <div class="inputBox0">
-                                            <span>CVV :</span>
-                                            <input type="text" placeholder="1234">
-                                        </div>
-                                    </div>
-                    
-                                </div>
-                        
-                            </div>
-                            <input type="submit" value="Submit Order" class="submit-btn">
+                <h3 class="title0">payment</h3>
+
+                <div class="inputBox0">
+                    <span>Payment :</span>
+<div class="custom-select" style="width:320px;">
+  <select>
+    <option value="0">Select payment :</option>
+    <option value="1">Cash payment</option>
+    <option value="3">Touch'n go</option>
+    <option value="4">credit card or debit card</option>
+  </select>
+</div>
+</div>
+<script>
+    var x, i, j, l, ll, selElmnt, a, b, c;
     
-    </form>
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      ll = selElmnt.length;
+      
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+     
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < ll; j++) {
+       
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+           
+            var y, i, k, s, h, sl, yl;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            sl = s.length;
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < sl; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                yl = y.length;
+                for (k = 0; k < yl; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      
+      var x, y, i, xl, yl, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      xl = x.length;
+      yl = y.length;
+      for (i = 0; i < yl; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < xl; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    
+    document.addEventListener("click", closeAllSelect);
+    </script>
+
+<div class="inputBox0">
+    <span>Name on card :</span>
+    <input type="text" placeholder="xxx">
+</div>
+<div class="inputBox0">
+    <span>Credit card number :</span>
+    <input type="type" placeholder="xxxx-xxxx-xxxx-xxxx">
+</div>
+
+
+<input type="submit" value="Submit Order" class="submit-btn">
+
+</form>
 </div>    
 </div>
 </section>
 </body>
 </html>
-
       
